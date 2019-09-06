@@ -1,6 +1,6 @@
 module.exports = {
   // 请求域名
-  HTTP_REQUEST_URL:'http://crmeb_v3_ky.net',
+  HTTP_REQUEST_URL:'http://127.0.0.1:8000/demo',
   // Socket链接
   WS_SERVER_URL:'',
   // 请求头

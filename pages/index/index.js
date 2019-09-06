@@ -84,7 +84,7 @@ Page({
         firstList: res.data.info.firstList,
         salesInfo: res.data.info.salesInfo,
         likeInfo: res.data.likeInfo,
-        lovelyBanner: res.data.info,
+        lovelyBanner: res.data.lovelyBanner,
         benefit: res.data.benefit,
         logoUrl: res.data.logoUrl,
         couponList: res.data.couponList,
