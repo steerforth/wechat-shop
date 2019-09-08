@@ -20,11 +20,11 @@ Page({
     navH: 0,
     cartCount:0,
     goodsHidden:true,
-    footerswitch: true,
+    footerswitch: true,//"立即下单"  和 ”收藏，删除“  功能页的切换
     host_product: [],
     cartList:[],
     isAllSelect:false,//全选
-    selectValue:[],//选中的数据
+    selectValue:[],//选中的商品的id集合
     selectCountPrice:0.00,
     isGoIndex: true,
     iShidden: false,
@@ -37,6 +37,9 @@ Page({
     that.setData({
       navH: app.globalData.navHeight
     });
+    /**
+     * 关闭授权
+     */
     if (app.globalData.token) that.setData({ iShidden:true});
   },
 
@@ -64,9 +67,17 @@ Page({
     var validList = that.data.cartList.valid;
     var selectValue = that.data.selectValue;
     var productId = [];
-    if (selectValue.length > 0){ for (var index in validList){if(that.inArray(validList[index].id, selectValue)) { productId.push(validList[index].product_id);}}};
+    if (selectValue.length > 0){ 
+      for (var index in validList){
+        if(that.inArray(validList[index].id, selectValue)) {                    productId.push(validList[index].product_id);
+        }
+      }
+    };
     return productId;
   },
+  /**
+   * 收藏
+   */
   subCollect: function (event){
     var formId = event.detail.formId, that = this, selectValue = that.data.selectValue;
     setFormId(formId);
@@ -81,6 +92,9 @@ Page({
       return app.Tips({ title:'请选择产品'});
     }
   },
+  /**
+   * 立即下单
+   */
   subOrder: function (event){
     var formId = event.detail.formId, that = this, selectValue = that.data.selectValue;
     setFormId(formId);
@@ -134,6 +148,9 @@ Page({
     for (var i in array) { if (array[i] == search) { return true; } }
     return false;
   },
+  /**
+   * 计算选中商品的总价
+   */
   switchSelect:function(){
     var that = this;
     var validList = that.data.cartList.valid;
@@ -149,6 +166,9 @@ Page({
       that.setData({ selectCountPrice: selectCountPrice.toFixed(2) });
     }
   },
+  /**
+   * 减购物车商品数量
+   */
   subCart:function(event){
     var that = this;
     var status = false;
@@ -238,6 +258,7 @@ Page({
        goodsHidden: !that.data.goodsHidden
      })
   },
+  //切换最下面 ”下单“和 ”收藏，删除“功能  页面
   manage:function(){
     var that = this;
     that.setData({
@@ -250,6 +271,7 @@ Page({
   onReady: function () {
 
   },
+  //authorize.js验证授权完回调函数
   onLoadFun: function () {
     this.getHostProduct();
     this.getCartList();

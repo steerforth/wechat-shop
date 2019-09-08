@@ -67,11 +67,14 @@ App({
     navHeight: 0,
     routineStyle: '#ffffff',
     openPages: '',
+    //推广人id
     spid: 0,
+    //推广人分享二维码ID
     code:0,
     urlImages: '',
     url: HTTP_REQUEST_URL,
     token: '',
+    //是否登陆
     isLog:false,
     expiresTime:0,
     MyMenus:[],

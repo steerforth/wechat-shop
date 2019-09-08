@@ -15,6 +15,9 @@ Component({
       type: Boolean,
       value: true,
     },
+    /**
+     * 弹窗关闭时是否去首页
+     */
     isGoIndex:{
       type: Boolean,
       value:true,
@@ -26,6 +29,9 @@ Component({
     errorSum:0,
     errorNum:3
   },
+  /**
+   * 组件生命周期函数-在组件实例进入页面节点树时执行
+   */
   attached() {
     this.get_logo_url();
     this.setAuthStatus();
@@ -81,7 +87,10 @@ Component({
         }
       })
     },
-    //授权
+    /**
+     * 拿code和userinfo敏感信息去自己服务器重新登录
+     * isLogin，是否调用过wx.login
+     */
     setUserInfo(userInfo,isLogin) {
       let that = this;
       wx.showLoading({ title: '正在登录中' });
@@ -98,6 +107,10 @@ Component({
         });
       }
     },
+    /**
+     * 参数：userinfo.code
+     * 去自己服务器重新获取
+     */
     getWxUserInfo: function (userInfo){
       let that = this;
       userInfo.spread_spid = app.globalData.spid;//获取推广人ID
