@@ -115,7 +115,9 @@ const wxgetUserInfo = function()
     })
   });
 }
-
+/**
+ * 检查本地登录状态
+ */
 const checkLogin = function()
 {
   let res = getApp().globalData.token ? true : false;
@@ -137,8 +139,10 @@ const logout = function()
 const chekWxLogin = function()
 {
   return new Promise((resolve, reject)=>{
+    //获取用户设置信息
     wx.getSetting({
       success(res) {
+        //用户是否同意过获取授权信息
         if (!res.authSetting['scope.userInfo']) {
           return reject({authSetting:false});
         } else {
@@ -157,9 +161,10 @@ const chekWxLogin = function()
               }
             },
             fail(){
-              getCodeLogin((code) => {
+              //wx.login获取登录凭证（code）
+              getCodeLogin((res) => {
                 wxgetUserInfo().then(userInfo => {
-                  userInfo.code = code;
+                  userInfo.code = res.code;
                   return resolve({ userInfo: userInfo, isLogin: false });
                 }).catch(res => {
                   return reject(res);
@@ -208,7 +213,9 @@ const autoLogin = function()
     });
   })
 }
-
+/**
+ * wx.login
+ */
 const getCodeLogin = function(successFn)
 {
   wx.login({
