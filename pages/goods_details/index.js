@@ -73,7 +73,7 @@ Page({
   getUserInfo: function(){
     var that=this;
     getUserInfo().then(res=>{
-      that.setData({ 'sharePacket.isState': res.data.is_promoter ? false : true, uid: res.data.uid });
+      that.setData({ 'sharePacket.isState': res.data.is_promoter ? false : true, uid: res.data.id });
     });
   },
   /**
