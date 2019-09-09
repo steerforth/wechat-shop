@@ -12,7 +12,7 @@
          <view class='label acea-row row-between-wrapper'>
            <view>原价:￥{{storeInfo.ot_price}}</view>
            <view>库存:{{storeInfo.stock}}{{storeInfo.unit_name}}</view>
-           <view>销量:{{storeInfo.fsales}}{{storeInfo.unit_name}}</view>
+           <view>销量:{{storeInfo.sales}}{{storeInfo.unit_name}}</view>
          </view>
          <view class='coupon acea-row row-between-wrapper' wx:if="{{storeInfo.give_integral > 0}}">
            <view class='hide line1 acea-row'>
