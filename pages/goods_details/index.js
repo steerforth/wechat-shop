@@ -178,7 +178,7 @@ Page({
       var storeInfo = res.data.storeInfo;
       that.setData({
         storeInfo: storeInfo,
-        reply: res.data.reply ? [res.data.reply] : [],
+        reply: res.data.reply ? res.data.reply : [],
         replyCount: res.data.replyCount,
         description: storeInfo.description,
         replyChance: res.data.replyChance,
@@ -205,10 +205,12 @@ Page({
     for (var i = 0, len = productAttr.length;i < len; i++){
       if (productAttr[i].attr_value[0]) productAttr[i].checked = productAttr[i].attr_value[0]['attr'];
     }
+    //返回数组["一斤装","高级"]
     var value=this.data.productAttr.map(function (attr) {
       return attr.checked;
     });
     var productSelect = this.data.productValue[value.sort().join(',')];
+    //选中pku的组合
     if (productSelect){
       this.setData({
         ["productSelect.store_name"]: storeInfo.store_name,
