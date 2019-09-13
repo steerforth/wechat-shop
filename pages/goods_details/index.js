@@ -25,7 +25,7 @@ Page({
       list:[],
     },
     attr:'请选择',//属性页面提示
-    attrValue:'',//已选属性
+    attrValue:'',//已选属性  eg."五斤装,高级"
     animated: false,//购物车动画
     id:0,//商品id
     replyCount: 0,//总评论数量
@@ -210,7 +210,7 @@ Page({
       return attr.checked;
     });
     var productSelect = this.data.productValue[value.sort().join(',')];
-    //选中pku的组合
+    //选中mku的组合
     if (productSelect){
       this.setData({
         ["productSelect.store_name"]: storeInfo.store_name,

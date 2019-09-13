@@ -15,7 +15,7 @@ export function login(data) {
 
 
 /**
- * 获取用户中心菜单
+ * 获取用户个人中心服务菜单
  *
  */
 export function getMenuList() {

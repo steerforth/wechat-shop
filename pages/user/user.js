@@ -20,6 +20,7 @@ Page({
     },
     userInfo:{},
     MyMenus:[],
+    //授权组件
     isGoIndex:false,
     iShidden:true,
     switchActive:false,

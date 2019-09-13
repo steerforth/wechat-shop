@@ -21,7 +21,7 @@
    <view class='loadingicon acea-row row-center-wrapper' wx:if="{{addressList.length}}">
         <text class='loading iconfont icon-jiazai' hidden='{{loading==false}}'></text>{{loadTitle}}
      </view>
-   <view class='noCommodity' wx:if="{{addressList.length < 1 && page > 1}}">
+   <view class='noCommodity' wx:if="{{addressList.length < 1 && page >= 1}}">
       <view class='pictrue'><image src='/images/noAddress.png'></image></view>
    </view>
    <view style='height:120rpx;'></view>

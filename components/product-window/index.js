@@ -19,6 +19,7 @@ Component({
         image: '',
         store_name: '',
         price: 0,
+        //?
         unique: '',
         stock:0,
       }
