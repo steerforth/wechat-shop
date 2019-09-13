@@ -69,6 +69,7 @@ Component({
           currPage.setData({ iShidden:true});
         }
         if (res.isLogin) {
+          //检查本地登录状态
           if (!Util.checkLogin()) return Promise.reject({ authSetting: true, msg: '用户token失效', userInfo: res.userInfo});
           that.triggerEvent('onLoadFun', app.globalData.userInfo);
         }else{
@@ -88,6 +89,7 @@ Component({
       })
     },
     /**
+     * 刷新token信息
      * 拿code和userinfo敏感信息去自己服务器重新登录
      * isLogin，是否调用过wx.login
      */
@@ -109,7 +111,7 @@ Component({
     },
     /**
      * 参数：userinfo.code
-     * 去自己服务器重新获取
+     * 去自己服务器重新获取，刷新token
      */
     getWxUserInfo: function (userInfo){
       let that = this;
